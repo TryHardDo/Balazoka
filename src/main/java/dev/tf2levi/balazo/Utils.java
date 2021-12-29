@@ -17,8 +17,4 @@ public class Utils {
                 "§8*"
         );
     }
-
-    public static boolean isHarvester(BlockPlaceEvent e) {
-       return false;
-    }
 }

@@ -4,16 +4,14 @@ import dev.tf2levi.balazo.commands.BaseCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.logging.Logger;
 
 public final class Balazoka extends JavaPlugin {
     private static Balazoka instance;
     private static Logger pluginLogger;
 
-    private static final List<Harvester> harvestersCache = new ArrayList<>();
+    private static final HashMap<UUID, Harvester> harvestersCache = new LinkedHashMap<>();
 
     @Override
     public void onEnable() {
@@ -46,7 +44,7 @@ public final class Balazoka extends JavaPlugin {
         return pluginLogger;
     }
 
-    public static List<Harvester> getHarvesters() {
+    public static HashMap<UUID, Harvester> getHarvesters() {
         return harvestersCache;
     }
 }

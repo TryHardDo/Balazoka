@@ -5,3 +5,8 @@ api-version: 1.18
 authors: [ Levi ]
 description: Lehetővé teszi hogy egy gép automatikusan learasson és a búzát bálába szedje, illetve a magot különszelektálja.
 website: https://www.dieselhungary.hu
+commands:
+  balazo:
+    permission: balazo.use
+    aliases: [harvester, balazoka]
+    usage: /<command> [args]
