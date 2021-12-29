@@ -1,17 +1,52 @@
 package dev.tf2levi.balazo;
 
+import dev.tf2levi.balazo.commands.BaseCommand;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.logging.Logger;
+
 public final class Balazoka extends JavaPlugin {
+    private static Balazoka instance;
+    private static Logger pluginLogger;
+
+    private static final List<Harvester> harvestersCache = new ArrayList<>();
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        getPluginLogger().info("Plugin indítása folyamatban...");
+        instance = this;
+        pluginLogger = this.getLogger();
 
+        Bukkit.getPluginManager().registerEvents(new ListenerClass(), this);
+
+        // CUSTOM SETUP START
+        Objects.requireNonNull(this.getCommand("balazo")).setExecutor(new BaseCommand());
+        // CUSTOM SETUP END
+
+        Utils.logStartupMessages(this);
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        Bukkit.getScheduler().cancelTasks(this);
+        harvestersCache.clear();
+
+        getPluginLogger().info("A plugin leállt.");
+    }
+
+    public static Balazoka getInstance() {
+        return instance;
+    }
+
+    public static Logger getPluginLogger() {
+        return pluginLogger;
+    }
+
+    public static List<Harvester> getHarvesters() {
+        return harvestersCache;
     }
 }
