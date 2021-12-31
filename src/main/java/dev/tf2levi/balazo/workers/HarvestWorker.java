@@ -1,14 +1,14 @@
-package dev.tf2levi.balazo.taskmanager;
+package dev.tf2levi.balazo.workers;
 
 import dev.tf2levi.balazo.Balazoka;
 import dev.tf2levi.balazo.Harvester;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 
-public class HarvestProcess extends BukkitRunnable {
+public class HarvestWorker extends BukkitRunnable {
     private final Harvester harvester;
 
-    public HarvestProcess(final Harvester harvester) {
+    public HarvestWorker(final Harvester harvester) {
         this.harvester = harvester;
     }
 
@@ -17,6 +17,7 @@ public class HarvestProcess extends BukkitRunnable {
         // A hosszú folyamat... Ide jön majd hogy mit tegyen a kombájn minden tickre amit kiad a scheduler.
 
         //Todo: Ezt majd írogatni!!!
+        // Algoritmikai ábra csatolva
 
         // MINDENKÉPP FRISSÍTENI KELL A CACHET MERT AKKOR NAGY BUGOK LESZNEK
         Balazoka.getHarvesters().replace(harvester.getId(), harvester);

@@ -19,6 +19,7 @@ public final class Balazoka extends JavaPlugin {
         instance = this;
         pluginLogger = this.getLogger();
 
+
         Bukkit.getPluginManager().registerEvents(new ListenerClass(), this);
 
         // CUSTOM SETUP START

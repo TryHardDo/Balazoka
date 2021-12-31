@@ -1,6 +1,6 @@
 package dev.tf2levi.balazo;
 
-import dev.tf2levi.balazo.taskmanager.HarvestProcess;
+import dev.tf2levi.balazo.workers.HarvestWorker;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
@@ -54,7 +54,7 @@ public class Harvester {
     }
 
     public void startHarvest() {
-        setTask(new HarvestProcess(this).startProcess());
+        setTask(new HarvestWorker(this).startProcess());
 
         setCurrentlyRunning(true);
     }
