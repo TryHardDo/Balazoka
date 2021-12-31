@@ -1,4 +1,4 @@
-name: Bálázóka
+name: Balazoka
 version: '${project.version}'
 main: dev.tf2levi.balazo.Balazoka
 api-version: 1.18
@@ -7,6 +7,11 @@ description: Lehetővé teszi hogy egy gép automatikusan learasson és a búzá
 website: https://www.dieselhungary.hu
 commands:
   balazo:
+    description: Fő parancs. Az argumentumoknak külön jogaik vannak.
     permission: balazo.use
-    aliases: [harvester, balazoka]
+    aliases: [ harvester, balazoka ]
     usage: /<command> [args]
+permissions:
+  balazo.use:
+    default: op
+    description: Az a jog amivel e segítség menü már megjeleníthető.

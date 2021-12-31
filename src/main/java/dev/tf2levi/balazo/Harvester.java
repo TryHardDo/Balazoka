@@ -53,6 +53,15 @@ public class Harvester {
         setInventory(Bukkit.createInventory(null, 9));
     }
 
+    public Harvester(final Player owner, final Location placedLocation, final UUID id, final Inventory savedInv) {
+        this.id = id;
+
+        setOwner(owner);
+        setCurrentPosition(placedLocation);
+
+        setInventory(savedInv);
+    }
+
     public void startHarvest() {
         setTask(new HarvestWorker(this).startProcess());
 

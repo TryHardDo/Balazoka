@@ -5,6 +5,8 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.Ageable;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +15,7 @@ import java.util.List;
 
 // Nem PUBLIC mert csak ezen a packagen belül lesz használva. Később ez persze változhat...
 class WorkerUtils {
-    static List<Block> preformScan(final Location workingLocation) {
+    static @Nullable List<Block> performScan(final Location workingLocation) {
         List<Block> harvestList = new ArrayList<>();
 
         for (BlockFace face : BlockFace.values()) {
@@ -39,7 +41,7 @@ class WorkerUtils {
         return harvestList;
     }
 
-    static HashMap<Material, Integer> preformHarvest(final List<Block> scannedList) {
+    static @Nullable HashMap<Material, Integer> performHarvest(final @NotNull List<Block> scannedList) {
         if (scannedList.isEmpty()) {
             return null;
         }
@@ -56,7 +58,7 @@ class WorkerUtils {
                 continue;
             }
 
-            harvestCache.replace(currentMat, harvestCache.get(currentMat)+ 1);
+            harvestCache.replace(currentMat, harvestCache.get(currentMat) + 1);
 
             removeHarvestedItem(block);
 
