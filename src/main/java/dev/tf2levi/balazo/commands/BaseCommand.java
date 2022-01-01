@@ -1,5 +1,6 @@
 package dev.tf2levi.balazo.commands;
 
+import dev.tf2levi.balazo.Balazoka;
 import dev.tf2levi.balazo.Harvester;
 import dev.tf2levi.balazo.itemstacks.HarvesterItem;
 import org.bukkit.command.Command;
@@ -20,7 +21,10 @@ public class BaseCommand implements CommandExecutor {
 
                 if (args[0].equalsIgnoreCase("get")) {
                     // NULL a hely ha kézbe kerül. Letétel után ez felülíródik.
-                    HarvesterItem item = new HarvesterItem(new Harvester(p, null));
+                    Harvester harvester = new Harvester(p, null);
+                    HarvesterItem item = new HarvesterItem(harvester);
+
+                    Balazoka.getHarvesters().put(harvester.getId(), harvester);
 
                     p.getInventory().addItem(item.getItem());
                     p.sendMessage("§aSikeres igénylés!");
