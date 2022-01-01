@@ -1,18 +1,29 @@
 package dev.tf2levi.balazo;
 
+import dev.tf2levi.balazo.itemstacks.HarvesterItem;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 
 public class ListenerClass implements Listener {
     @EventHandler
     public void onHarvesterDeploy(@NotNull BlockPlaceEvent e) {
+        if (e.getBlock().getType() != Material.BLAST_FURNACE) {
+            return;
+        }
+
         if (e.getItemInHand().getItemMeta() == null) {
             return;
         }
@@ -23,19 +34,64 @@ public class ListenerClass implements Listener {
             return;
         }
 
-        UUID harvesterID = UUID.fromString(placedBlockMeta.getLore().get(placedBlockMeta.getLore().size() + 1).replace("§7", ""));
+        UUID harvesterID = UUID.fromString(placedBlockMeta.getLore().get(placedBlockMeta.getLore().size() - 1).replace("§7", ""));
 
         if (!Balazoka.getHarvesters().containsKey(harvesterID)) {
             return;
         }
 
         Harvester harvester = Balazoka.getHarvesters().get(harvesterID);
+        Player placer = e.getPlayer();
 
-        // Todo: Innen folytatni
+        if (!harvester.getOwner().getUniqueId().equals(placer.getUniqueId())) {
+            placer.sendMessage("§cNem te vagy ennek a kombájnak a tulajdonosa így ezt nem használhatod.");
+            e.setCancelled(true);
+            return;
+        }
+
+        if (harvester.getCurrentPosition() != null) {
+            placer.sendMessage("§cIlyen kombájn már le van helyezve ezzel az ID-vel.");
+            e.setCancelled(true);
+            return;
+        }
+
+        harvester.setCurrentPosition(e.getBlock().getLocation());
+
+        placer.sendMessage("§aKombájn letéve. Regisztrálva a rendszerben.... ID:" + harvester.getId());
+
     }
 
     @EventHandler
     public void onInteract(PlayerInteractEvent e) {
 
+    }
+
+    @EventHandler
+    public void onHarvesterBreak(BlockBreakEvent e) {
+        if (e.getBlock().getType() != Material.BLAST_FURNACE) {
+            return;
+        }
+
+        Location blockLoc = e.getBlock().getLocation();
+        Harvester brokenHarvester = null;
+
+        for (Map.Entry<UUID, Harvester> cachePart : Balazoka.getHarvesters().entrySet()) {
+            if (blockLoc.equals(cachePart.getValue().getCurrentPosition())) {
+                brokenHarvester = cachePart.getValue();
+                break;
+            }
+        }
+
+        if (brokenHarvester == null) {
+            return;
+        }
+
+        brokenHarvester.setCurrentPosition(null);
+
+        // Cache-be frissíteni kell az események miatt
+        Balazoka.getHarvesters().replace(brokenHarvester.getId(), brokenHarvester);
+
+        e.setDropItems(false);
+        Objects.requireNonNull(blockLoc.getWorld()).dropItem(blockLoc, new HarvesterItem(brokenHarvester).getItem());
     }
 }
