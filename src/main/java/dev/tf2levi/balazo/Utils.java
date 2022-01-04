@@ -1,8 +1,12 @@
 package dev.tf2levi.balazo;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Location;
 import org.bukkit.plugin.Plugin;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Map;
+import java.util.UUID;
 
 public class Utils {
     public static void logStartupMessages(@NotNull Plugin p) {
@@ -21,5 +25,24 @@ public class Utils {
 
     public static double getFuelPercent(final double fuelTankSize, final double currentTankLevel) {
         return (currentTankLevel / fuelTankSize) * 100;
+    }
+
+    public static void updateCache(final Harvester harvester) {
+        Balazoka.getHarvesters().replace(harvester.getId(), harvester);
+    }
+
+    public static Harvester searchByLocation(final Location location) {
+        if (location == null) return null;
+
+        Harvester harvester = null;
+
+        for (Map.Entry<UUID, Harvester> cachePiece : Balazoka.getHarvesters().entrySet()) {
+            if (cachePiece.getValue().getCurrentPosition().equals(location)) {
+                harvester = cachePiece.getValue();
+                break;
+            }
+        }
+
+        return harvester;
     }
 }
