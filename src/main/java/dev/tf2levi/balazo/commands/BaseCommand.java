@@ -8,6 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.InventoryType;
 import org.jetbrains.annotations.NotNull;
 
 public class BaseCommand implements CommandExecutor {
@@ -28,6 +29,8 @@ public class BaseCommand implements CommandExecutor {
 
                     p.getInventory().addItem(item.getItem());
                     p.sendMessage("§aSikeres igénylés!");
+                } else if (args[0].equalsIgnoreCase("test")) {
+                    p.sendMessage("§c" + InventoryType.STONECUTTER.isCreatable());
                 }
             }
         }

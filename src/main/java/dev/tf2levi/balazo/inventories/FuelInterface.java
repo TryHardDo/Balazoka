@@ -4,25 +4,26 @@ import dev.tf2levi.balazo.Harvester;
 import dev.tf2levi.balazo.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.block.BlastFurnace;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.*;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class FuelInterface {
-    private final Inventory fuelInterface = Bukkit.createInventory(null, InventoryType.DISPENSER, "§4§lMOTOR");
+    private final Inventory fuelInterface = Bukkit.createInventory(null, InventoryType.BLAST_FURNACE);
     private final Harvester harvester;
 
     public FuelInterface(final Harvester harvester) {
         this.harvester = harvester;
 
-        fuelInterface.setItem(1, getDataItem());
 
     }
 
-    private ItemStack getDataItem() {
+    private @Nullable ItemStack getDataItem() {
         ItemStack base = new ItemStack(Material.IRON_HOE, 1);
         ItemMeta baseMeta = base.getItemMeta();
 
