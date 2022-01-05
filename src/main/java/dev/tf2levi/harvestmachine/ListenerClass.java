@@ -58,6 +58,8 @@ public class ListenerClass implements Listener
 
         placer.sendMessage("§aKombájn letéve. Regisztrálva a rendszerben.... ID:" + harvester.getId());
 
+        placer.sendMessage(HarvestMachine.getHarvesters().toString());
+
     }
 
     @EventHandler

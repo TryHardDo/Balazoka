@@ -43,7 +43,11 @@ public class Utils
 
         for (Map.Entry<UUID, Harvester> cachePiece : HarvestMachine.getHarvesters().entrySet())
         {
-            if (cachePiece.getValue().getCurrentPosition().equals(location))
+            Harvester cacheValue = cachePiece.getValue();
+
+            if (cacheValue.getCurrentPosition() == null) continue;
+
+            if (cacheValue.getCurrentPosition().equals(location))
             {
                 harvester = cachePiece.getValue();
                 break;

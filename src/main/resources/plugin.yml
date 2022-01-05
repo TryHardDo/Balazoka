@@ -9,7 +9,7 @@ commands:
   harvestmachine:
     description: Fő parancs. Az argumentumoknak külön jogaik vannak.
     permission: hmachine.use
-    aliases: [ harvester, balazoka ]
+    aliases: [harvester]
     usage: /<command> [args]
 permissions:
   balazo.use:
