@@ -10,25 +10,38 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.logging.Logger;
 
-public final class Balazoka extends JavaPlugin {
+public final class HarvestMachine extends JavaPlugin
+{
     private static final HashMap<UUID, Harvester> harvestersCache = new LinkedHashMap<>();
-    private static Balazoka instance;
+
+    private static final boolean DEBUG_MODE = true;
+
+    private static HarvestMachine instance;
     private static Logger pluginLogger;
 
-    public static Balazoka getInstance() {
+    public static HarvestMachine getInstance()
+    {
         return instance;
     }
 
-    public static Logger getPluginLogger() {
+    public static Logger getPluginLogger()
+    {
         return pluginLogger;
     }
 
-    public static HashMap<UUID, Harvester> getHarvesters() {
+    public static HashMap<UUID, Harvester> getHarvesters()
+    {
         return harvestersCache;
     }
 
+    public static boolean isDebugModeEnabled()
+    {
+        return DEBUG_MODE;
+    }
+
     @Override
-    public void onEnable() {
+    public void onEnable()
+    {
         instance = this;
         pluginLogger = this.getLogger();
 
@@ -37,15 +50,14 @@ public final class Balazoka extends JavaPlugin {
 
         Bukkit.getPluginManager().registerEvents(new ListenerClass(), this);
 
-        // CUSTOM SETUP START
-        Objects.requireNonNull(this.getCommand("balazo")).setExecutor(new BaseCommand());
-        // CUSTOM SETUP END
+        Objects.requireNonNull(this.getCommand("harvestmachine")).setExecutor(new BaseCommand());
 
         Utils.logStartupMessages(this);
     }
 
     @Override
-    public void onDisable() {
+    public void onDisable()
+    {
         Bukkit.getScheduler().cancelTasks(this);
         harvestersCache.clear();
 

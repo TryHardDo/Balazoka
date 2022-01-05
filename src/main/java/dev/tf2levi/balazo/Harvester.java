@@ -9,7 +9,8 @@ import org.bukkit.scheduler.BukkitTask;
 
 import java.util.UUID;
 
-public class Harvester {
+public class Harvester
+{
     // A kombájn ID-je
     private final UUID id;
     // Az a player akié a kombájn
@@ -35,7 +36,8 @@ public class Harvester {
     // A kombájn fut e jelenleg vagy sem
     private boolean currentlyRunning = false;
 
-    public Harvester(final Player owner, final Location placedLocation) {
+    public Harvester(final Player owner, final Location placedLocation)
+    {
         this.id = UUID.randomUUID();
 
         setOwner(owner);
@@ -44,7 +46,8 @@ public class Harvester {
         setInventory(Bukkit.createInventory(null, 9));
     }
 
-    public Harvester(final Player owner, final Location placedLocation, final UUID id) {
+    public Harvester(final Player owner, final Location placedLocation, final UUID id)
+    {
         this.id = id;
 
         setOwner(owner);
@@ -53,7 +56,8 @@ public class Harvester {
         setInventory(Bukkit.createInventory(null, 9));
     }
 
-    public Harvester(final Player owner, final Location placedLocation, final UUID id, final Inventory savedInv) {
+    public Harvester(final Player owner, final Location placedLocation, final UUID id, final Inventory savedInv)
+    {
         this.id = id;
 
         setOwner(owner);
@@ -62,107 +66,132 @@ public class Harvester {
         setInventory(savedInv);
     }
 
-    public void startHarvest() {
+    public void startHarvest()
+    {
         setTask(new HarvestWorker(this).startProcess());
 
         setCurrentlyRunning(true);
     }
 
-    public void stopHarvest() {
+    public void stopHarvest()
+    {
         getTask().cancel();
 
         setCurrentlyRunning(false);
     }
 
-    public UUID getId() {
+    public UUID getId()
+    {
         return id;
     }
 
-    public Player getOwner() {
+    public Player getOwner()
+    {
         return owner;
     }
 
-    public void setOwner(Player owner) {
+    public void setOwner(Player owner)
+    {
         this.owner = owner;
     }
 
-    public int getLevel() {
+    public int getLevel()
+    {
         return level;
     }
 
-    public void setLevel(int level) {
+    public void setLevel(int level)
+    {
         this.level = level;
     }
 
-    public double getFuelTankSize() {
+    public double getFuelTankSize()
+    {
         return fuelTankSize;
     }
 
-    public void setFuelTankSize(double fuelTankSize) {
+    public void setFuelTankSize(double fuelTankSize)
+    {
         this.fuelTankSize = fuelTankSize;
     }
 
-    public double getCurrentFuelLevel() {
+    public double getCurrentFuelLevel()
+    {
         return currentFuelLevel;
     }
 
-    public void setCurrentFuelLevel(double currentFuelLevel) {
+    public void setCurrentFuelLevel(double currentFuelLevel)
+    {
         this.currentFuelLevel = currentFuelLevel;
     }
 
-    public int getSpeedMultiplier() {
+    public int getSpeedMultiplier()
+    {
         return speedMultiplier;
     }
 
-    public void setSpeedMultiplier(int speedMultiplier) {
+    public void setSpeedMultiplier(int speedMultiplier)
+    {
         this.speedMultiplier = speedMultiplier;
     }
 
-    public long getTotalHarvests() {
+    public long getTotalHarvests()
+    {
         return totalHarvests;
     }
 
-    public void setTotalHarvests(long totalHarvests) {
+    public void setTotalHarvests(long totalHarvests)
+    {
         this.totalHarvests = totalHarvests;
     }
 
-    public Location getCurrentPosition() {
+    public Location getCurrentPosition()
+    {
         return currentPosition;
     }
 
-    public void setCurrentPosition(Location currentPosition) {
+    public void setCurrentPosition(Location currentPosition)
+    {
         this.currentPosition = currentPosition;
     }
 
-    public int getHarvestBlockWidth() {
+    public int getHarvestBlockWidth()
+    {
         return harvestBlockWidth;
     }
 
-    public void setHarvestBlockWidth(int harvestBlockWidth) {
+    public void setHarvestBlockWidth(int harvestBlockWidth)
+    {
         this.harvestBlockWidth = harvestBlockWidth;
     }
 
-    public BukkitTask getTask() {
+    public BukkitTask getTask()
+    {
         return task;
     }
 
-    public void setTask(BukkitTask task) {
+    public void setTask(BukkitTask task)
+    {
         this.task = task;
     }
 
-    public Inventory getInventory() {
+    public Inventory getInventory()
+    {
         return inventory;
     }
 
-    public void setInventory(Inventory inventory) {
+    public void setInventory(Inventory inventory)
+    {
         this.inventory = inventory;
     }
 
-    public boolean isCurrentlyRunning() {
+    public boolean isCurrentlyRunning()
+    {
         return currentlyRunning;
     }
 
-    public void setCurrentlyRunning(boolean currentlyRunning) {
+    public void setCurrentlyRunning(boolean currentlyRunning)
+    {
         this.currentlyRunning = currentlyRunning;
     }
 }

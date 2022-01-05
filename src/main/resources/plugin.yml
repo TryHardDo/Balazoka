@@ -1,14 +1,14 @@
-name: Balazoka
+name: HarvestMachine
 version: '${project.version}'
 main: dev.tf2levi.balazo.Balazoka
 api-version: 1.18
 authors: [ Levi ]
-description: Lehetővé teszi hogy egy gép automatikusan learasson és a búzát bálába szedje, illetve a magot különszelektálja.
+description: Termények automatikus összeszedésére és a bejövő termés szelektálására alkalmas.
 website: https://www.dieselhungary.hu
 commands:
   balazo:
     description: Fő parancs. Az argumentumoknak külön jogaik vannak.
-    permission: balazo.use
+    permission: hmachine.use
     aliases: [ harvester, balazoka ]
     usage: /<command> [args]
 permissions:

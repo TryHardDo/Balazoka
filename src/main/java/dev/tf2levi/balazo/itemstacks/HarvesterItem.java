@@ -10,18 +10,22 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HarvesterItem {
+public class HarvesterItem
+{
     private final Harvester harvester;
 
-    public HarvesterItem(final Harvester harvester) {
+    public HarvesterItem(final Harvester harvester)
+    {
         this.harvester = harvester;
     }
 
-    public ItemStack getItem() {
+    public ItemStack getItem()
+    {
         ItemStack baseItem = new ItemStack(Material.BLAST_FURNACE, 1);
         ItemMeta meta = baseItem.getItemMeta();
 
-        if (meta == null) {
+        if (meta == null)
+        {
             return null;
         }
 
