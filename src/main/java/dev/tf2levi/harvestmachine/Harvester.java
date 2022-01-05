@@ -1,6 +1,6 @@
-package dev.tf2levi.balazo;
+package dev.tf2levi.harvestmachine;
 
-import dev.tf2levi.balazo.workers.HarvestWorker;
+import dev.tf2levi.harvestmachine.workers.HarvestWorker;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

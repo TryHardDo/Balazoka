@@ -1,7 +1,7 @@
-package dev.tf2levi.balazo.workers;
+package dev.tf2levi.harvestmachine.workers;
 
-import dev.tf2levi.balazo.HarvestMachine;
-import dev.tf2levi.balazo.Harvester;
+import dev.tf2levi.harvestmachine.HarvestMachine;
+import dev.tf2levi.harvestmachine.Harvester;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 

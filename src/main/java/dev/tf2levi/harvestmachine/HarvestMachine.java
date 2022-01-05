@@ -1,6 +1,6 @@
-package dev.tf2levi.balazo;
+package dev.tf2levi.harvestmachine;
 
-import dev.tf2levi.balazo.commands.BaseCommand;
+import dev.tf2levi.harvestmachine.commands.BaseCommand;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 

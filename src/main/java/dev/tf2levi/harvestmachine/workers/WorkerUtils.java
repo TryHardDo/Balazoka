@@ -1,4 +1,4 @@
-package dev.tf2levi.balazo.workers;
+package dev.tf2levi.harvestmachine.workers;
 
 import org.bukkit.Location;
 import org.bukkit.Material;

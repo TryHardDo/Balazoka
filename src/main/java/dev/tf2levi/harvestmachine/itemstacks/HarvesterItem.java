@@ -1,7 +1,7 @@
-package dev.tf2levi.balazo.itemstacks;
+package dev.tf2levi.harvestmachine.itemstacks;
 
-import dev.tf2levi.balazo.Harvester;
-import dev.tf2levi.balazo.Utils;
+import dev.tf2levi.harvestmachine.Harvester;
+import dev.tf2levi.harvestmachine.Utils;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;

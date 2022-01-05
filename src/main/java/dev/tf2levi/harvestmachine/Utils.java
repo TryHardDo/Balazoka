@@ -1,4 +1,4 @@
-package dev.tf2levi.balazo;
+package dev.tf2levi.harvestmachine;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

@@ -1,8 +1,8 @@
-package dev.tf2levi.balazo.commands;
+package dev.tf2levi.harvestmachine.commands;
 
-import dev.tf2levi.balazo.HarvestMachine;
-import dev.tf2levi.balazo.Harvester;
-import dev.tf2levi.balazo.itemstacks.HarvesterItem;
+import dev.tf2levi.harvestmachine.HarvestMachine;
+import dev.tf2levi.harvestmachine.Harvester;
+import dev.tf2levi.harvestmachine.itemstacks.HarvesterItem;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

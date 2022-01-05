@@ -1,12 +1,12 @@
 name: HarvestMachine
 version: '${project.version}'
-main: dev.tf2levi.balazo.Balazoka
+main: dev.tf2levi.harvestmachine.HarvestMachine
 api-version: 1.18
 authors: [ Levi ]
 description: Termények automatikus összeszedésére és a bejövő termés szelektálására alkalmas.
 website: https://www.dieselhungary.hu
 commands:
-  balazo:
+  harvestmachine:
     description: Fő parancs. Az argumentumoknak külön jogaik vannak.
     permission: hmachine.use
     aliases: [ harvester, balazoka ]
